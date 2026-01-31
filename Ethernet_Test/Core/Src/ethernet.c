@@ -173,7 +173,7 @@ void ETH_load_reg_addr(uint8_t reg_addr, uint8_t check_busy) {
 		while (*ETH_MACMIIAR & 0x00000001); // wait until busy bit is cleared
 	}
 
-	if (reg_addr == 0x00) *ETH_MACMIIAR &= ~0x00000780; // cannot write zero using OR, must clear using AND
+	if (reg_addr == 0x00) *ETH_MACMIIAR &= ~0x000007C0; // cannot write zero using OR, must clear using AND
 	else *ETH_MACMIIAR |= (reg_addr & 0x1F) << 6; // register address should be 5 bits wide
 }
 
